@@ -268,7 +268,7 @@ int main() {
 	using namespace std;
 
 	//welcome screen
-	cout << "Welcome to CHEST!" << endl;
+	cout << "Welcome to CHEST QUEST!" << endl;
 	cout << "Type \"!\" to check version number." << endl;
 	cout << "Type \"n\" to start a new game." << endl << endl;
 	
