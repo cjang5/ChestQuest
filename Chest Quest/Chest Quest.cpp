@@ -218,9 +218,11 @@ void getNextCommand() {
 		if (isGameRunning) {
 			cout << "\t\"!\"\tCheck version number of CHEST." << endl;
 			cout << "\t\"c\"\tContinue on your journey opening chests." << endl;
+			cout << "\t\"x\"\tExit the game." << endl;
 		} else {
 			cout << "\t\"!\"\tCheck version number of CHEST." << endl;
 			cout << "\t\"n\"\tStart a new game." << endl;
+			cout << "\t\"x\"\tExit the game." << endl;
 		}
 		//add more couts when more commands are made
 		goto getAnotherCommand;
