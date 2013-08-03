@@ -23,6 +23,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include "Random.h" //for random number generation
+#include "Events.h" //for random events
 
 //forward declarations
 void startNewGame();
@@ -205,6 +206,7 @@ void getNextCommand() {
 	switch (command) {
 	//continue
 	case 'c': case 'C':
+		//random event
 		currentChest = randChest();
 		goto getAnotherCommand;
 		break;
