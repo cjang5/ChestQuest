@@ -24,6 +24,7 @@
 #include <iostream>
 #include "Random.h" //for random number generation
 #include "Events.h" //for random events
+#include <string>	//for strings
 
 //forward declarations
 void startNewGame();
