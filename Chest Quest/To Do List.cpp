@@ -15,7 +15,7 @@
 			[x]	Basic
 			[x]	Metal
 			[x]	Treasure
-			[]	Messages telling the player what kind of chest they found
+			[^]	Messages telling the player what kind of chest they found
 		[]	Implement chest statuses
 			[]	Locked
 			[]	Unlocked
@@ -33,4 +33,10 @@
 			[F]	Better potions; heal different amounts
 		[F]	Experience/Level (In the character struct)
 			[F]	Level ups >> HP cap >> etc...
+		[]	Add HP to 's' status menu
+		[F]	Add terrain (0.0.5a + ...)
+			[]	Rocky
+			[]	Plains
+			[]	Lava world
+		[]	void function called YesOrNo
 */
