@@ -212,7 +212,7 @@ void getNextCommand() {
 		//chanceForEvent = Random(1, 3);
 		//if (chanceForEvent == 1)
 		randomEvent;
-
+		
 		//get a new chest
 		currentChest = randChest();
 		goto getAnotherCommand;
