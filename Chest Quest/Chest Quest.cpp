@@ -25,6 +25,7 @@
 #include "Random.h" //for random number generation
 #include "Events.h" //for random events
 #include <string>	//for strings
+#include "Character.h" //for characters
 
 //forward declarations
 void startNewGame();
@@ -42,21 +43,6 @@ void exitGame() {
 }
 
 //STRUCTS (IN THE PROCESS OF MOVING TO CLASSES)
-//Character
-class Character {
-private:
-	//attributes
-	int HP;	//health points
-
-public:
-	void initialize() {		//initialize player values at start of a new game
-		HP = 10;
-	}
-
-	void addHP(int x) {		//Add or remove HP from damage, etc.
-		HP += x;
-	}
-};
 
 Character player; //player (YOU)
 
