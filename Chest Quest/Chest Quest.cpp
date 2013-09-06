@@ -25,6 +25,7 @@
 #include "Random.h" //for random number generation
 #include "Events.h" //for random events
 #include <string>	//for strings
+#include "Character.h" //for characters
 
 //forward declarations
 void startNewGame();
@@ -44,20 +45,36 @@ void exitGame() {
 	exit(0);
 }
 
-//STRUCTS
-//Character
-struct Character {
-	//Inventory mainInv;
-	int HP; //health points
-	//TODO: Stats; STR, DEX, etc...
-};
+//STRUCTS (IN THE PROCESS OF MOVING TO CLASSES)
 
 Character player; //player (YOU)
 
 //Inventory
-struct Inventory {
+class Inventory {
+private:
 	unsigned int gold;			//the amount of gold you have
 	unsigned int numPotions;	//the amount of potions you have; Currently in 0.0.1a only one type of potion - heals 10HP (WHEN HP IS IMPLEMENTED)
+public:
+	unsigned int getGold() {	//getter for inventory's gold amount
+		return gold;
+	}
+
+	unsigned int getNumPotions() {	//getter for inventory's potions amount
+		return numPotions;
+	}
+
+	void addGold(int x) {
+		gold += x;
+	}
+
+	void addPotion(int x) {
+		numPotions += x;
+	}
+
+	void initialize() {		//initialize inventory
+		gold = 0;
+		numPotions = 0;
+	}
 
 	//TODO: Stats, e.g: STR, INT, DEF, etc...
 };
@@ -134,11 +151,11 @@ void lootChest(chestObject cc) {
 		break;
 	}
 	
-	inv.gold += rGold;					//add the gold found to your inventory 
+	inv.addGold(rGold);					//add the gold found to your inventory 
 	if (rGold > 0)						//Tell the player how much gold they found if amount > 0
 		cout << "You found: " << rGold << " gold pieces from the chest!" << endl;
 	
-	inv.numPotions += rPotions;			//add the number of potions found (if any) to the inventory
+	inv.addPotion(rPotions);		//add the number of potions found (if any) to the inventory
 	if (rPotions == 1)
 		cout << "You found a potion!" << endl;
 	else if (rPotions > 1)
@@ -154,11 +171,10 @@ void startNewGame() {
 	isGameRunning = true;
 
 	//initialize inventory
-	inv.gold = 0;
-	inv.numPotions = 0;
+	inv.initialize();
 
 	//initialize character
-	player.HP = 10; //default HP(10)
+	player.initialize();
 
 	//generate first chest
 	currentChest = randChest();
@@ -169,8 +185,14 @@ void startNewGame() {
 
 //character actions
 void usePotion() { //COMPLETE THIS LATER WHEN MONSTERS OR DAMAGE ARE IMPLEMENTED;; no point in potions if you cant get hurt!!
-	inv.numPotions--;
-	player.HP += 5;
+	using namespace std;
+	if (inv.getNumPotions() > 0) {
+		cout << "You use a potion." << endl;
+		inv.addPotion(-1);
+		player.addHP(5); //placeholder for potion healing value. TODO: Different types of potions with different effects.
+	} else {
+		cout << "You have no potions to use!" << endl;
+	}
 }
 
 //getNextCommand
@@ -230,6 +252,7 @@ void getNextCommand() {
 		if (isGameRunning) {
 			cout << "\t\"!\"\tCheck version number of CHEST." << endl;
 			cout << "\t\"c\"\tContinue on your journey opening chests." << endl;
+			cout << "\t\"s\"\tCheck your character's current status." << endl;
 			cout << "\t\"x\"\tExit the game." << endl;
 		} else {
 			cout << "\t\"!\"\tCheck version number of CHEST." << endl;
@@ -264,8 +287,8 @@ void getNextCommand() {
 		break;
 	//status - Gold count, potion count, etc...
 	case 's': case 'S':
-		cout << "\tGOLD: " << inv.gold << endl;
-		cout << "\tPOTIONS: " << inv.numPotions << endl;
+		cout << "\tGOLD: " << inv.getGold() << endl;
+		cout << "\tPOTIONS: " << inv.getNumPotions() << endl;
 		goto getAnotherCommand;
 		break;
 	//Default
