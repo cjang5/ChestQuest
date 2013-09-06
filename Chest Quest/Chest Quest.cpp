@@ -36,6 +36,9 @@ bool isGameRunning = false;		//to check if the game is running
 bool isChestPresent = false;	//check if there is a chest present currently
 int chestNo = 0;				//current Chest number you are on
 
+//Yes or No for yes or no related functions
+string YesOrNo() {
+}
 //exiting the game
 void exitGame() {
 	exit(0);
