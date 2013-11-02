@@ -46,7 +46,7 @@ void exitGame() {
 }
 
 //STRUCTS (IN THE PROCESS OF MOVING TO CLASSES)
-//test commit from vs2013 to vs2012
+//test commit from vs2012 to vs2013
 Character player; //player (YOU)
 
 //Inventory
